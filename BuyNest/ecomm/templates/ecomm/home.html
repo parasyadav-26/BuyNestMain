@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNest Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Navbar styling */
+        nav {
+            display: flex;
+            align-items: center;
+            background-color: #e0f7fa; /* Light cyan */
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #00796b; /* Teal */
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover {
+            background-color: #b2dfdb;
+        }
+
+        /* Brand Logo */
+        .brand {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00796b; /* Teal */
+            text-transform: uppercase;
+            margin-left: 20px;
+            flex-grow: 1;
+        }
+
+        /* Search bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 2;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+        }
+
+        /* Carousel styling */
+        .carousel {
+            margin: 20px;
+            padding: 20px;
+        }
+        .carousel img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Category card styling */
+        .category-section {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            color: #00796b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #e0f7fa;
+            color: #00796b;
+            position: relative;
+        }
+
+        /* Layout for search and nav bar */
+        .header-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Brand Logo, Search Bar, and Navbar -->
+    <header>
+        <div class="header-container">
+            <!-- Brand Logo -->
+            <div class="brand">
+                BuyNest
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, categories...">
+            </div>
+
+            <!-- Navbar (right side of search bar) -->
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Carousel Section -->
+    <section class="carousel">
+        <img src="https://via.placeholder.com/1200 x300?text=Current+Offers" alt="Current Offers">
+    </section>
+
+    <section class="category-section">
+        {% for category in categories %}
+            <a href="{% url 'products_view' category.id %}">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x150?text={{ category.name }}" alt="{{ category.name }}">
+                    <h3>{{ category.name }}</h3>
+                </div>
+            </a>
+        {% endfor %}
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 BuyNest. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - BuyNest</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8; /* Light background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container for the form (card-style layout) */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Styling for form fields */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Spacing between the fields */
+        }
+
+        label {
+            font-size: 14px;
+            color: #333; /* Darker color for labels */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 12px; /* Larger padding for input fields */
+            border: 1px solid #ddd; /* Subtle border */
+            border-radius: 6px; /* Rounded corners */
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the submit button */
+        button[type="submit"] {
+            background-color: #00796b; /* Teal background */
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        button[type="submit"]:hover {
+            background-color: #004d40; /* Darker teal on hover */
+        }
+
+        /* Secondary button styling */
+        button.secondary {
+            background-color: #eee; /* Light gray background */
+            color: #333;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for secondary button */
+        button.secondary:hover {
+            background-color: #ddd;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 500px) {
+            .form-container {
+                padding: 20px;
+                width: 90%;
+            }
+
+            button[type="submit"],
+            button.secondary {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2 style="text-align: center; color: #00796b;">Register</h2>
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter your first name" required>
+            
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter your last name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+        
+        
+        
+    </div>
+
+</body>
+</html>
